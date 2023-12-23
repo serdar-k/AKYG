@@ -1,0 +1,12 @@
+[Unit]
+Description=Sample server
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/home/serdar
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:app.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
